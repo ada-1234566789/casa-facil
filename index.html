@@ -3,238 +3,333 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CasaFácil - Asesoría Inmobiliaria Confiable</title>
+    <title>CasaFácil - Tu Propiedad en Buenas Manos</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap');
+        :root {
+            --brand-blue: #0f172a;
+            --brand-yellow: #fbbf24;
+            --brand-accent: #3b82f6;
+        }
+        .bg-brand-blue { background-color: var(--brand-blue); }
+        .text-brand-blue { color: var(--brand-blue); }
+        .bg-brand-yellow { background-color: var(--brand-yellow); }
+        .text-brand-yellow { color: var(--brand-yellow); }
         
-        body {
-            font-family: 'Outfit', sans-serif;
-            scroll-behavior: smooth;
-        }
-
-        .gradient-text {
-            background: linear-gradient(90deg, #2563eb, #7c3aed);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero-shape {
-            clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
-        }
-
-        .floating {
-            animation: floating 3s ease-in-out infinite;
-        }
-
-        @keyframes floating {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-            100% { transform: translateY(0px); }
+        .hero-section {
+            background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.7)), url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=1920');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
         }
 
         .card-hover:hover {
             transform: translateY(-10px);
             box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
         }
+
+        .scroll-smooth { scroll-behavior: smooth; }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: var(--brand-blue); border-radius: 10px; }
     </style>
 </head>
-<body class="bg-white text-slate-900">
+<body class="font-sans text-slate-900 scroll-smooth bg-white">
 
     <!-- Navegación -->
-    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-xl border-b border-slate-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-20 items-center">
-                <div class="flex items-center gap-2">
-                    <div class="bg-blue-600 p-2 rounded-xl rotate-3">
-                        <i class="fas fa-home text-white text-xl"></i>
-                    </div>
-                    <span class="text-2xl font-extrabold text-slate-800">Casa<span class="text-blue-600">Fácil</span></span>
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md shadow-sm">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="flex items-center space-x-2 group">
+                <div class="w-10 h-10 bg-brand-blue flex items-center justify-center rounded-lg group-hover:bg-brand-yellow transition-colors duration-300">
+                    <i class="fas fa-home text-white group-hover:text-brand-blue text-xl"></i>
                 </div>
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#servicios" class="font-semibold text-slate-600 hover:text-blue-600 transition">Servicios</a>
-                    <a href="#contacto" class="bg-blue-600 text-white px-6 py-2.5 rounded-full font-bold hover:bg-blue-700 shadow-lg shadow-blue-200 transition">
-                        ¡Vende ahora!
-                    </a>
-                </div>
-                <a href="https://wa.me/51905786230" target="_blank" class="md:hidden text-2xl text-green-500">
-                    <i class="fab fa-whatsapp"></i>
-                </a>
+                <span class="text-2xl font-bold text-brand-blue tracking-tighter">CasaFácil</span>
+            </a>
+            <div class="hidden md:flex items-center space-x-8 font-semibold">
+                <a href="#servicios" class="text-slate-600 hover:text-brand-blue transition">Servicios</a>
+                <a href="#proceso" class="text-slate-600 hover:text-brand-blue transition">Proceso</a>
+                <a href="#contacto" class="bg-brand-blue text-white px-7 py-2.5 rounded-full hover:shadow-lg hover:bg-slate-800 transition transform hover:-translate-y-0.5">Asesoría Gratuita</a>
             </div>
+            <button class="md:hidden text-2xl text-brand-blue">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-40 overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col lg:flex-row items-center gap-12">
-                <div class="lg:w-1/2 text-center lg:text-left">
-                    <span class="inline-block px-4 py-1.5 rounded-full bg-blue-100 text-blue-700 font-bold text-sm mb-6">
-                        🏠 ASESORÍA INMOBILIARIA CONFIABLE
-                    </span>
-                    <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 leading-tight mb-6">
-                        Vende o alquila tu propiedad <span class="gradient-text">sin complicaciones</span>
-                    </h1>
-                    <p class="text-lg text-slate-600 mb-10 max-w-xl mx-auto lg:mx-0">
-                        Te ayudo a vender o alquilar tu propiedad de forma <span class="font-bold text-blue-600">segura</span>, rápida y al mejor precio del mercado.
-                    </p>
-                    <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
-                        <a href="#contacto" class="px-8 py-4 bg-blue-600 text-white rounded-2xl font-bold text-lg hover:bg-blue-700 transition-all shadow-xl shadow-blue-200 flex items-center justify-center gap-2">
-                            Empieza hoy <i class="fas fa-arrow-right"></i>
-                        </a>
-                        <a href="tel:905786230" class="px-8 py-4 bg-slate-100 text-slate-800 rounded-2xl font-bold text-lg hover:bg-slate-200 transition flex items-center justify-center gap-2">
-                            <i class="fas fa-phone-alt"></i> 905 786 230
-                        </a>
-                    </div>
+    <header class="hero-section min-h-screen flex items-center pt-20">
+        <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+            <div class="text-white space-y-6">
+                <div class="inline-block px-4 py-1 bg-brand-yellow text-brand-blue font-bold rounded-full text-sm uppercase tracking-widest mb-2">
+                    Expertos en el Sector Inmobiliario
                 </div>
-                <div class="lg:w-1/2 relative">
-                    <div class="relative z-10 floating">
-                        <img src="https://images.unsplash.com/photo-1582408921715-18e7806367c1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Propiedad de Lujo" class="rounded-[2.5rem] shadow-2xl border-8 border-white">
+                <h1 class="text-5xl md:text-7xl font-black leading-tight">
+                    Vendemos tu <br>
+                    <span class="text-brand-yellow">propiedad</span> por ti.
+                </h1>
+                <p class="text-xl text-slate-200 max-w-lg leading-relaxed">
+                    Evita riesgos, trámites tediosos y pérdidas de tiempo. En <strong>CasaFácil</strong> gestionamos la venta o alquiler de tu inmueble con total seguridad y profesionalismo.
+                </p>
+                <div class="flex flex-wrap gap-4 pt-4">
+                    <a href="#contacto" class="bg-brand-yellow text-brand-blue font-bold px-10 py-4 rounded-xl shadow-xl hover:scale-105 transition transform flex items-center">
+                        Empezar Ahora <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                    <a href="tel:+51905786230" class="bg-white/10 backdrop-blur-md border border-white/20 text-white font-bold px-10 py-4 rounded-xl hover:bg-white/20 transition">
+                        Llamar: 901 174 544
+                    </a>
+                </div>
+                <div class="flex items-center space-x-4 pt-6 text-sm text-slate-300">
+                    <div class="flex -space-x-2">
+                        <img class="w-8 h-8 rounded-full border-2 border-brand-blue" src="https://i.pravatar.cc/100?u=1" alt="Cliente">
+                        <img class="w-8 h-8 rounded-full border-2 border-brand-blue" src="https://i.pravatar.cc/100?u=2" alt="Cliente">
+                        <img class="w-8 h-8 rounded-full border-2 border-brand-blue" src="https://i.pravatar.cc/100?u=3" alt="Cliente">
                     </div>
-                    <!-- Decoración -->
-                    <div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-xl z-20 hidden sm:block">
-                        <div class="flex items-center gap-4">
-                            <div class="bg-green-100 text-green-600 p-3 rounded-full">
-                                <i class="fas fa-shield-alt text-xl"></i>
-                            </div>
-                            <div>
-                                <p class="text-xs font-bold text-slate-400 uppercase">Garantía</p>
-                                <p class="text-slate-800 font-extrabold">100% Trato Seguro</p>
-                            </div>
-                        </div>
-                    </div>
+                    <p>+500 propiedades gestionadas con éxito</p>
+                </div>
+            </div>
+            <div class="hidden md:block">
+                <div class="bg-white/10 backdrop-blur-sm p-1 border border-white/20 rounded-3xl">
+                    <img src="https://www.grupoinka.pe/imagenes/varios/portada.jpg" alt="Casa de lujo" class="rounded-[1.4rem] shadow-2xl">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Stats Section -->
+    <section class="py-12 bg-brand-yellow">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-brand-blue text-center">
+                <div>
+                    <p class="text-4xl font-black">10+</p>
+                    <p class="font-medium uppercase text-xs tracking-widest">Años de Experiencia</p>
+                </div>
+                <div>
+                    <p class="text-4xl font-black">100%</p>
+                    <p class="font-medium uppercase text-xs tracking-widest">Seguridad Legal</p>
+                </div>
+                <div>
+                    <p class="text-4xl font-black">24h</p>
+                    <p class="font-medium uppercase text-xs tracking-widest">Respuesta Rápida</p>
+                </div>
+                <div>
+                    <p class="text-4xl font-black">0</p>
+                    <p class="font-medium uppercase text-xs tracking-widest">Preocupaciones</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Sección de Servicios Inmobiliarios -->
+    <!-- Servicios -->
     <section id="servicios" class="py-24 bg-slate-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 mb-4">Servicios Inmobiliarios</h2>
-                <p class="text-slate-600 max-w-2xl mx-auto font-medium">Vende o alquila tu propiedad de manera rápida y segura con el respaldo que necesitas.</p>
+        <div class="container mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-20">
+                <h2 class="text-4xl font-bold text-brand-blue mb-4">Soluciones Inmobiliarias Integrales</h2>
+                <div class="h-1.5 w-24 bg-brand-yellow mx-auto mb-6"></div>
+                <p class="text-slate-600 text-lg italic">"Te ayudo a vender o alquilar tu propiedad de forma segura, evitando riesgos y optimizando tu tiempo."</p>
             </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Venta y Alquiler -->
-                <div class="bg-white p-10 rounded-[2rem] card-hover transition-all duration-300 border border-slate-100">
-                    <div class="w-16 h-16 bg-blue-600 text-white rounded-2xl flex items-center justify-center text-3xl mb-8 shadow-lg shadow-blue-200">
-                        <i class="fas fa-sign-hanging"></i>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Venta -->
+                <div class="bg-white p-10 rounded-3xl shadow-sm card-hover transition-all duration-300 border border-slate-100">
+                    <div class="w-14 h-14 bg-blue-50 text-brand-blue rounded-2xl flex items-center justify-center mb-8">
+                        <i class="fas fa-sign text-2xl"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4">Venta y Alquiler</h3>
-                    <p class="text-slate-600 leading-relaxed mb-6">Promoción estratégica de tu inmueble en portales inmobiliarios y redes sociales para encontrar al cliente ideal.</p>
-                    <ul class="space-y-3 text-sm font-semibold text-slate-500">
-                        <li><i class="fas fa-check text-blue-600 mr-2"></i> Reporte de visitas</li>
-                        <li><i class="fas fa-check text-blue-600 mr-2"></i> Filtro de prospectos</li>
-                    </ul>
+                    <h3 class="text-2xl font-bold mb-4">Venta Estratégica</h3>
+                    <p class="text-slate-600 leading-relaxed">Marketing digital avanzado y fotografía profesional para que tu propiedad destaque en todos los portales inmobiliarios.</p>
                 </div>
-
-                <!-- Asesoría Personalizada -->
-                <div class="bg-white p-10 rounded-[2rem] card-hover transition-all duration-300 border border-slate-100">
-                    <div class="w-16 h-16 bg-purple-600 text-white rounded-2xl flex items-center justify-center text-3xl mb-8 shadow-lg shadow-purple-200">
-                        <i class="fas fa-user-tie"></i>
+                <!-- Alquiler -->
+                <div class="bg-white p-10 rounded-3xl shadow-sm card-hover transition-all duration-300 border border-slate-100">
+                    <div class="w-14 h-14 bg-yellow-50 text-brand-yellow rounded-2xl flex items-center justify-center mb-8">
+                        <i class="fas fa-key text-2xl"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4">Asesoría Personalizada</h3>
-                    <p class="text-slate-600 leading-relaxed mb-6">Un trato directo y humano. Te guío paso a paso para tomar la mejor decisión financiera y patrimonial.</p>
-                    <ul class="space-y-3 text-sm font-semibold text-slate-500">
-                        <li><i class="fas fa-check text-purple-600 mr-2"></i> Análisis de mercado</li>
-                        <li><i class="fas fa-check text-purple-600 mr-2"></i> Estrategia de precio</li>
-                    </ul>
+                    <h3 class="text-2xl font-bold mb-4">Alquiler Seguro</h3>
+                    <p class="text-slate-600 leading-relaxed">Filtramos rigurosamente a los candidatos. Verificación de antecedentes y solvencia para tu tranquilidad total.</p>
                 </div>
-
-                <!-- Trámites en Regla -->
-                <div class="bg-white p-10 rounded-[2rem] card-hover transition-all duration-300 border border-slate-100">
-                    <div class="w-16 h-16 bg-indigo-600 text-white rounded-2xl flex items-center justify-center text-3xl mb-8 shadow-lg shadow-indigo-200">
-                        <i class="fas fa-file-contract"></i>
+                <!-- Legal -->
+                <div class="bg-white p-10 rounded-3xl shadow-sm card-hover transition-all duration-300 border border-slate-100">
+                    <div class="w-14 h-14 bg-slate-900 text-white rounded-2xl flex items-center justify-center mb-8">
+                        <i class="fas fa-balance-scale text-2xl"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4">Trámites en Regla</h3>
-                    <p class="text-slate-600 leading-relaxed mb-6">Olvídate del estrés. Gestión de documentos, contratos legales y seguimiento en notaría hasta el cierre final.</p>
-                    <ul class="space-y-3 text-sm font-semibold text-slate-500">
-                        <li><i class="fas fa-check text-indigo-600 mr-2"></i> Revisión de SUNARP/Arbitrios</li>
-                        <li><i class="fas fa-check text-indigo-600 mr-2"></i> Contratos seguros</li>
-                    </ul>
+                    <h3 class="text-2xl font-bold mb-4">Asesoría Legal</h3>
+                    <p class="text-slate-600 leading-relaxed">Gestión de contratos, minutas y trámites notariales. Nos aseguramos de que cada documento cumpla la ley.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Información de Contacto Directo -->
-    <section id="contacto" class="py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-slate-900 rounded-[3rem] p-8 md:p-16 flex flex-col lg:flex-row gap-16 items-center overflow-hidden relative">
-                <div class="absolute top-0 right-0 w-96 h-96 bg-blue-600/10 rounded-full -mr-48 -mt-48"></div>
-                
-                <div class="lg:w-1/2 relative z-10 text-white">
-                    <h2 class="text-4xl font-extrabold mb-8">¿Listo para dar el siguiente paso?</h2>
+    <!-- Proceso -->
+    <section id="proceso" class="py-24 bg-white overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center gap-16">
+                <div class="md:w-1/2">
+                    <img src="https://www.pmgchile.com/wp-content/uploads/2016/05/posVenta.jpg" alt="Reunión" class="rounded-3xl shadow-2xl">
+                </div>
+                <div class="md:w-1/2 space-y-8">
+                    <h2 class="text-4xl font-bold text-brand-blue">Nuestro método de trabajo</h2>
+                    <div class="space-y-6">
+                        <div class="flex gap-4">
+                            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-brand-blue text-white flex items-center justify-center font-bold italic">1</div>
+                            <div>
+                                <h4 class="text-xl font-bold text-brand-blue">Evaluación Comercial</h4>
+                                <p class="text-slate-600">Analizamos el mercado para fijar el precio correcto y competitivo de tu inmueble.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-brand-yellow text-brand-blue flex items-center justify-center font-bold italic">2</div>
+                            <div>
+                                <h4 class="text-xl font-bold text-brand-blue">Promoción Activa</h4>
+                                <p class="text-slate-600">Publicamos en portales premium y redes sociales, llegando a miles de compradores potenciales.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-brand-blue text-white flex items-center justify-center font-bold italic">3</div>
+                            <div>
+                                <h4 class="text-xl font-bold text-brand-blue">Cierre y Post-venta</h4>
+                                <p class="text-slate-600">Negociamos las mejores condiciones y te acompañamos hasta la firma final en notaría.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galería de Tipos (Placeholder) -->
+    <section class="py-24 bg-slate-900 text-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-12 text-center">Inmuebles que gestionamos</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="relative group overflow-hidden rounded-2xl h-64">
+                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=400" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" alt="Oficinas">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-6">
+                        <p class="font-bold">Locales y Oficinas</p>
+                    </div>
+                </div>
+                <div class="relative group overflow-hidden rounded-2xl h-64">
+                    <img src="https://cf.bstatic.com/static/img/theme-index/bg_apartments_new/5062c4701202cd04226b76a5a70f8651ee9d94d8.jpg" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" alt="Departamentos">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-6">
+                        <p class="font-bold">Departamentos</p>
+                    </div>
+                </div>
+                <div class="relative group overflow-hidden rounded-2xl h-64">
+                    <img src="https://img10.naventcdn.com/avisos/111/01/48/48/08/15/360x266/1578022833.jpg?isFirstImage=true" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" alt="Casas">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-6">
+                        <p class="font-bold">Casas</p>
+                    </div>
+                </div>
+                <div class="relative group overflow-hidden rounded-2xl h-64">
+                    <img src="https://img.mitula.com/eyJidWNrZXQiOiJwcmQtbGlmdWxsY29ubmVjdC1iYWNrZW5kLWIyYi1pbWFnZXMiLCJrZXkiOiJpbmdlc3Rlci8wMTkwNTI2Ni0xYzc3LTdhZjAtODU1Yy04NzAyMGQyNGRhODIvOTBiYmExNjVjYmRmMDExOWRiZTJhMTI3MDZiODE1ZDE0MmNkZmY0MDljZTIyMjBmMzU2NDUyMjJjMjBjYmNiMC5qcGVnIiwiYnJhbmQiOiJtaXR1bGEiLCJlZGl0cyI6eyJyb3RhdGUiOm51bGwsInJlc2l6ZSI6eyJ3aWR0aCI6MzgwLCJoZWlnaHQiOjIzMCwiZml0IjoiY292ZXIifX19" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" alt="Terrenos">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-6">
+                        <p class="font-bold">Terrenos</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contacto" class="py-24 bg-slate-50">
+        <div class="container mx-auto px-6">
+            <div class="bg-white rounded-[3rem] shadow-2xl overflow-hidden flex flex-col md:flex-row border border-slate-100">
+                <div class="md:w-1/2 bg-brand-blue p-12 text-white flex flex-col justify-center">
+                    <h2 class="text-4xl font-bold mb-6">¿Listo para dar el siguiente paso?</h2>
+                    <p class="text-slate-400 mb-10 text-lg">Solicita tu evaluación de propiedad sin costo alguno. Estamos aquí para ayudarte.</p>
+                    
                     <div class="space-y-8">
-                        <div class="flex items-center gap-6">
-                            <div class="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center text-blue-400 text-2xl">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div>
-                                <p class="text-slate-400 text-sm font-bold uppercase tracking-wider">Ubícanos en</p>
-                                <p class="text-xl font-semibold">Av. Perú 210</p>
-                            </div>
-                        </div>
-                        <div class="flex items-center gap-6">
-                            <div class="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center text-blue-400 text-2xl">
-                                <i class="fas fa-clock"></i>
-                            </div>
-                            <div>
-                                <p class="text-slate-400 text-sm font-bold uppercase tracking-wider">Horario de atención</p>
-                                <p class="text-xl font-semibold">8:00 AM - 9:00 PM</p>
-                            </div>
-                        </div>
-                        <div class="flex items-center gap-6">
-                            <div class="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center text-blue-400 text-2xl">
+                        <div class="flex items-center space-x-5">
+                            <div class="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center text-brand-yellow">
                                 <i class="fas fa-phone-alt"></i>
                             </div>
                             <div>
-                                <p class="text-slate-400 text-sm font-bold uppercase tracking-wider">Llámanos</p>
-                                <p class="text-xl font-semibold">905 786 230</p>
+                                <p class="text-sm text-slate-400 uppercase tracking-widest font-bold">Llámanos</p>
+                                <p class="text-xl font-bold">901 174 544</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-5">
+                            <div class="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center text-brand-yellow">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-slate-400 uppercase tracking-widest font-bold">Ubicación</p>
+                                <p class="text-xl font-bold">Av. Perú 210,Andahuaylas</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-5">
+                            <div class="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center text-brand-yellow">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-slate-400 uppercase tracking-widest font-bold">Email</p>
+                                <p class="text-xl font-bold">contacto@casafacil.pe</p>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="lg:w-1/2 w-full relative z-10">
-                    <div class="bg-white p-8 md:p-10 rounded-[2rem] shadow-2xl">
-                        <h4 class="text-2xl font-bold text-slate-800 mb-6 text-center">Envíame un mensaje</h4>
-                        <div class="space-y-4">
-                            <a href="https://wa.me/51905786230" target="_blank" class="flex items-center justify-center gap-3 w-full py-4 bg-green-500 text-white font-bold rounded-2xl hover:bg-green-600 transition-all text-lg shadow-lg shadow-green-100">
-                                <i class="fab fa-whatsapp text-2xl"></i> Atención por WhatsApp
-                            </a>
-                            <div class="text-center text-slate-400 text-sm py-2 uppercase font-bold tracking-widest">O síguenos en</div>
-                            <div class="flex justify-center gap-4">
-                                <a href="#" class="w-14 h-14 flex items-center justify-center bg-blue-100 text-blue-600 rounded-2xl hover:bg-blue-600 hover:text-white transition-all">
-                                    <i class="fab fa-facebook-f text-xl"></i>
-                                </a>
-                                <a href="#" class="w-14 h-14 flex items-center justify-center bg-pink-100 text-pink-600 rounded-2xl hover:bg-pink-600 hover:text-white transition-all">
-                                    <i class="fab fa-instagram text-xl"></i>
-                                </a>
+                
+                <div class="md:w-1/2 p-12">
+                    <form onsubmit="event.preventDefault(); alert('¡Solicitud enviada! Nos pondremos en contacto pronto.');">
+                        <div class="grid grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <label class="block text-sm font-bold text-slate-700 mb-2 uppercase">Nombre</label>
+                                <input type="text" required class="w-full bg-slate-50 border-0 rounded-xl px-4 py-3 focus:ring-2 focus:ring-brand-yellow outline-none" placeholder="Juan">
                             </div>
-                            <p class="text-center mt-6 font-bold text-slate-800">CasaFacil</p>
+                            <div>
+                                <label class="block text-sm font-bold text-slate-700 mb-2 uppercase">Apellido</label>
+                                <input type="text" required class="w-full bg-slate-50 border-0 rounded-xl px-4 py-3 focus:ring-2 focus:ring-brand-yellow outline-none" placeholder="Pérez">
+                            </div>
                         </div>
-                    </div>
+                        <div class="mb-4">
+                            <label class="block text-sm font-bold text-slate-700 mb-2 uppercase">WhatsApp / Celular</label>
+                            <input type="tel" required class="w-full bg-slate-50 border-0 rounded-xl px-4 py-3 focus:ring-2 focus:ring-brand-yellow outline-none" placeholder="999 999 999">
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-sm font-bold text-slate-700 mb-2 uppercase">Tipo de Inmueble</label>
+                            <select class="w-full bg-slate-50 border-0 rounded-xl px-4 py-3 focus:ring-2 focus:ring-brand-yellow outline-none appearance-none">
+                                <option>Departamento</option>
+                                <option>Casa</option>
+                                <option>Local Comercial</option>
+                                <option>Terreno / Lote</option>
+                            </select>
+                        </div>
+                        <div class="mb-8">
+                            <label class="block text-sm font-bold text-slate-700 mb-2 uppercase">Mensaje</label>
+                            <textarea class="w-full bg-slate-50 border-0 rounded-xl px-4 py-3 focus:ring-2 focus:ring-brand-yellow outline-none h-32" placeholder="Cuéntanos sobre tu propiedad..."></textarea>
+                        </div>
+                        <button class="w-full bg-brand-yellow text-brand-blue font-black py-5 rounded-2xl shadow-xl hover:shadow-brand-yellow/20 transition-all duration-300 uppercase tracking-widest">
+                            Solicitar Tasación Gratuita
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="py-12 bg-white border-t border-slate-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div class="flex items-center justify-center gap-2 mb-6">
-                <div class="bg-blue-600 p-1.5 rounded-lg">
+    <footer class="bg-white py-12 border-t border-slate-100">
+        <div class="container mx-auto px-6 text-center">
+            <div class="flex items-center justify-center space-x-2 mb-8">
+                <div class="w-8 h-8 bg-brand-blue flex items-center justify-center rounded">
                     <i class="fas fa-home text-white text-sm"></i>
                 </div>
-                <span class="text-xl font-extrabold text-slate-800">Casa<span class="text-blue-600">Fácil</span></span>
+                <span class="text-xl font-bold text-brand-blue">CasaFácil</span>
             </div>
-            <p class="text-slate-500 font-medium">© 2024 CasaFácil. Vende o alquila con la seguridad que mereces.</p>
+            <div class="flex justify-center space-x-8 mb-8 text-slate-400">
+                <a href="#" class="hover:text-brand-blue transition font-bold">Inicio</a>
+                <a href="#servicios" class="hover:text-brand-blue transition font-bold">Servicios</a>
+                <a href="#proceso" class="hover:text-brand-blue transition font-bold">Proceso</a>
+                <a href="#contacto" class="hover:text-brand-blue transition font-bold">Contacto</a>
+            </div>
+            <p class="text-slate-400 text-sm">© 2024 CasaFácil Asesoría Inmobiliaria Profesional. Av. Perú 210, San Martín de Porres.</p>
         </div>
     </footer>
+
+    <!-- WhatsApp Flotante -->
+    <a href="https://wa.me/51905786230" target="_blank" class="fixed bottom-8 right-8 bg-[#25D366] text-white w-16 h-16 rounded-full flex items-center justify-center text-3xl shadow-2xl hover:scale-110 transition transform z-50">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
 </body>
 </html>
